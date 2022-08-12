@@ -1,4 +1,5 @@
 obj
+bin
 json
 appsettings.json
 appsettings.*.json
