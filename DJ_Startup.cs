@@ -37,6 +37,6 @@ public class DJ_Startup
         services.AddSingleton<Data.WeatherForecastService>();
         
         services.AddTransient<MySqlConnection>(_ => new MySqlConnection(_configuration["ConnectionStrings:Default"]));
-        services.AddSingleton<Data.UserService>();
+        services.AddSingleton<Data.UserInfoService>();
     }
 }
