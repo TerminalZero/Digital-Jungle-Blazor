@@ -1,8 +1,16 @@
+using MySqlConnector;
+
 namespace Digital_Jungle_Blazor;
 
 public class DJ_Startup
 {
-    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    IConfiguration _configuration { get; set; }
+
+    public DJ_Startup(IConfiguration configuration) {
+        _configuration = configuration;
+    }
+
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env, Data.UserService infoService)
     {
         if (!env.IsDevelopment())
         {
@@ -27,5 +35,8 @@ public class DJ_Startup
         services.AddRazorPages();
         services.AddServerSideBlazor();
         services.AddSingleton<Data.WeatherForecastService>();
+        
+        services.AddTransient<MySqlConnection>(_ => new MySqlConnection(_configuration["ConnectionStrings:Default"]));
+        services.AddSingleton<Data.UserService>();
     }
 }
