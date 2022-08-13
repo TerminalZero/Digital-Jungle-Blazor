@@ -10,7 +10,7 @@ public class DJ_Startup
         _configuration = configuration;
     }
 
-    public void Configure(IApplicationBuilder app, IWebHostEnvironment env, Data.UserService infoService)
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
         if (!env.IsDevelopment())
         {
