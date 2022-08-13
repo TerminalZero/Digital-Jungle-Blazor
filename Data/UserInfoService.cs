@@ -11,7 +11,7 @@ public class UserInfoService {
     public async Task<UserInfo> GetUserById(int id) {
         await _connection.OpenAsync();
 
-        using var command = new MySqlCommand($"SELECT * FROM UserInfo WHERE Id = {id};", _connection);
+        using var command = new MySqlCommand($"SELECT * FROM UserInfo LIMIT {id-1}, {id};", _connection);
         using var reader = await command.ExecuteReaderAsync();
         await reader.ReadAsync();
         
@@ -21,6 +21,7 @@ public class UserInfoService {
             JoinDate = reader.GetDateTime(2)
         };
 
+        _connection.Close();
         return userInfo;
     }
 }
