@@ -7,4 +7,8 @@
     <RootNamespace>Digital_Jungle_Blazor</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MySqlConnector" Version="2.1.12" />
+  </ItemGroup>
+
 </Project>
