@@ -1,11 +1,13 @@
-namespace Digital_Jungle_Blazor.Data.Public;
+namespace Digital_Jungle_Blazor.Services.Querying;
 
-using MySqlConnector;
+using Services.SqlConnections;
+using Data.Public;
 
 public class UserInfoService {
-    MySqlConnection _connection { get; set; }
-    public UserInfoService(MySqlConnection connection) {
-        _connection = connection;
+    MySqlConnector.MySqlConnection _connection { get; set; }
+    
+    public UserInfoService(QueryingConnection connection) {
+        _connection = connection.Get;
     }
 
     public Task<UserInfo> GetUserById(int id)
@@ -14,7 +16,7 @@ public class UserInfoService {
     public async Task<List<UserInfo>> GetUsers(int LIMIT_start = 0, int LIMIT_end = 1000) {
         await _connection.OpenAsync();
 
-        using var command = new MySqlCommand($"SELECT * FROM UserInfo LIMIT { LIMIT_start }, { LIMIT_end };", _connection);
+        using var command = new MySqlConnector.MySqlCommand($"SELECT * FROM UserInfo LIMIT { LIMIT_start }, { LIMIT_end };", _connection);
         using var reader = await command.ExecuteReaderAsync();
 
         List<UserInfo> userInfos = new();
@@ -33,3 +35,4 @@ public class UserInfoService {
         return userInfos;
     }
 }
+

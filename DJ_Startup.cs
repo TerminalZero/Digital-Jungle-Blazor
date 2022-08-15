@@ -1,4 +1,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Digital_Jungle_Blazor.Services.SqlConnections;
+using Digital_Jungle_Blazor.Services.Querying;
+
 using MySqlConnector;
 
 namespace Digital_Jungle_Blazor;
@@ -45,9 +48,11 @@ public class DJ_Startup
                 options.SlidingExpiration = true;
             });
 
-        services.AddSingleton<Data.WeatherForecastService>();
-        
-        services.AddTransient<MySqlConnection>(_ => new MySqlConnection(_configuration["ConnectionStrings:Default"]));
-        services.AddSingleton<Data.Public.UserInfoService>();
+        services.AddSingleton<ExampleData.WeatherForecastService>();
+
+        services.AddSingleton<UserInfoService>();
+        services.AddTransient<QueryingConnection>();
+        services.AddTransient<ValidatingConnection>();
+
     }
 }

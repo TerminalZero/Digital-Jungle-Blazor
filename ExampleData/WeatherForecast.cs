@@ -1,4 +1,4 @@
-namespace Digital_Jungle_Blazor.Data;
+namespace Digital_Jungle_Blazor.ExampleData;
 
 public class WeatherForecast
 {
