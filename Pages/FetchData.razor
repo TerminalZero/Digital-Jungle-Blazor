@@ -1,48 +1,26 @@
 ﻿@page "/fetchdata"
 
-<PageTitle>Weather forecast</PageTitle>
+<PageTitle>User info</PageTitle>
 
-@using Digital_Jungle_Blazor.ExampleData
-@inject WeatherForecastService ForecastService
+@using Digital_Jungle_Blazor.Services.SqlQuerying
+@inject UserInfoService userInfoService
 
-<h1>Weather forecast</h1>
-
-<p>This component demonstrates fetching data from a service.</p>
-
-@if (forecasts == null)
+@if (userInfos == null)
 {
-    <p><em>Loading...</em></p>
+    <p>Fetching from database...</p>
 }
 else
 {
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Temp. (C)</th>
-                <th>Temp. (F)</th>
-                <th>Summary</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var forecast in forecasts)
-            {
-                <tr>
-                    <td>@forecast.Date.ToShortDateString()</td>
-                    <td>@forecast.TemperatureC</td>
-                    <td>@forecast.TemperatureF</td>
-                    <td>@forecast.Summary</td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    @foreach (UserInfo userInfo in userInfos) {
+        <p>@userInfo.Name</p>
+    }
 }
 
 @code {
-    private WeatherForecast[]? forecasts;
+    private List<UserInfo>? userInfos;
 
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+        userInfos = await userInfoService.GetUsers();
     }
 }
