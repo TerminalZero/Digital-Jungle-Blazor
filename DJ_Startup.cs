@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Digital_Jungle_Blazor.Services.SqlConnections;
-using Digital_Jungle_Blazor.Services.Querying;
+using Digital_Jungle_Blazor.Services.SqlQuerying;
 
 using MySqlConnector;
 

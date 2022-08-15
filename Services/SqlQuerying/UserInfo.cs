@@ -1,4 +1,4 @@
-namespace Digital_Jungle_Blazor.Data.Public;
+namespace Digital_Jungle_Blazor.Services.SqlQuerying;
 
 public class UserInfo {
     public int Id { get; set; }
