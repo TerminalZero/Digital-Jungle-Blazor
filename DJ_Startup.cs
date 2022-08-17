@@ -2,18 +2,12 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Digital_Jungle_Blazor.Services.SqlConnections;
 using Digital_Jungle_Blazor.Services.SqlQuerying;
 
-using MySqlConnector;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 namespace Digital_Jungle_Blazor;
 
 public class DJ_Startup
 {
-    IConfiguration _configuration { get; set; }
-
-    public DJ_Startup(IConfiguration configuration) {
-        _configuration = configuration;
-    }
-
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
         app.UseHttpsRedirection();
@@ -36,8 +30,17 @@ public class DJ_Startup
         });
     }
 
-    public void ConfigureServices(IServiceCollection services)
+    public void ConfigureServices(IServiceCollection services, IConfiguration configuration)
     {
+        services.Configure<KestrelServerOptions>(config => {
+            config.ListenAnyIP(443, configure => {
+                configure.UseHttps(
+                    configuration["Kestrel:Certificates:djcert:KeyPath"],
+                    configuration["Kestrel:Certificates:djcert:Password"]
+                );
+            });
+        });
+
         services.AddRazorPages();
         services.AddServerSideBlazor();
 
