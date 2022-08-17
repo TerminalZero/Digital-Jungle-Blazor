@@ -39,12 +39,16 @@ public class DJ_Startup
     public void ConfigureServices(IServiceCollection services)
     {
         services.Configure<KestrelServerOptions>(config => {
-            config.ListenAnyIP(443, configure => {
-                configure.UseHttps(
-                    _configuration["Kestrel:Certificates:djcert:KeyPath"],
-                    _configuration["Kestrel:Certificates:djcert:Password"]
-                );
-            });
+            try {
+                config.ListenAnyIP(443, configure => {
+                    configure.UseHttps(
+                        _configuration["Kestrel:Certificates:djcert:KeyPath"],
+                        _configuration["Kestrel:Certificates:djcert:Password"]
+                    );
+                });
+            } catch (Exception e) {
+                System.Console.WriteLine(e.Message);
+            }
         });
 
         services.AddRazorPages();
