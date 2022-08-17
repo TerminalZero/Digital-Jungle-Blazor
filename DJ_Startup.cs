@@ -8,6 +8,12 @@ namespace Digital_Jungle_Blazor;
 
 public class DJ_Startup
 {
+    IConfiguration _configuration { get; set; }
+
+    public DJ_Startup(IConfiguration configuration) {
+        _configuration = configuration;
+    }
+
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
         app.UseHttpsRedirection();
@@ -30,13 +36,13 @@ public class DJ_Startup
         });
     }
 
-    public void ConfigureServices(IServiceCollection services, IConfiguration configuration)
+    public void ConfigureServices(IServiceCollection services)
     {
         services.Configure<KestrelServerOptions>(config => {
             config.ListenAnyIP(443, configure => {
                 configure.UseHttps(
-                    configuration["Kestrel:Certificates:djcert:KeyPath"],
-                    configuration["Kestrel:Certificates:djcert:Password"]
+                    _configuration["Kestrel:Certificates:djcert:KeyPath"],
+                    _configuration["Kestrel:Certificates:djcert:Password"]
                 );
             });
         });
