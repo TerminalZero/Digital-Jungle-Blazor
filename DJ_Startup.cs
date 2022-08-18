@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Digital_Jungle_Blazor.Services.SqlConnections;
-using Digital_Jungle_Blazor.Services.SqlQuerying;
+using Digital_Jungle_Blazor.Services.Querying;
 
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 
@@ -63,7 +63,7 @@ public class DJ_Startup
 
         services.AddSingleton<ExampleData.WeatherForecastService>();
 
-        services.AddSingleton<UserInfoService>();
+        services.AddSingleton<UserInfo.Service>();
         services.AddTransient<QueryingConnection>();
         services.AddTransient<ValidatingConnection>();
 
