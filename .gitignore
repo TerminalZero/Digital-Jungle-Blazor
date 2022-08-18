@@ -4,3 +4,5 @@ json
 appsettings.json
 appsettings.*.json
 .vscode
+node_modules
+package-lock.json
