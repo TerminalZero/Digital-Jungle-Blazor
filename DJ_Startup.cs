@@ -51,7 +51,7 @@ public class DJ_Startup
             }
         });
 
-        services.AddRazorPages();
+        services.AddRazorPages(_ => _.RootDirectory = "/RazorPages");
         services.AddServerSideBlazor();
 
         services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
