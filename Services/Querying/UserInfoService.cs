@@ -1,4 +1,4 @@
-namespace Digital_Jungle_Blazor.Services.Querying;
+namespace Digital_Jungle_Blazor.Data;
 
 using Services.SqlConnections;
 
