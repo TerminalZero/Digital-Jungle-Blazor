@@ -63,7 +63,7 @@ public class DJ_Startup
 
         services.AddSingleton<ExampleData.WeatherForecastService>();
 
-        services.AddSingleton<UserInfo.Service>();
+        services.AddSingleton<UserInfo.QueryingService>();
         services.AddTransient<QueryingConnection>();
         services.AddTransient<ValidatingConnection>();
 
