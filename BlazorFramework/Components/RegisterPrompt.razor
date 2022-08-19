@@ -1,0 +1,15 @@
+﻿@using Services.QueryingService;
+@inject UserInfoService InfoService;
+
+<EditForm Model="@userInfo" OnValidSubmit="@SubmitInfo">
+    <InputText class="register" @bind-Value="@userInfo.Name"></InputText>
+</EditForm>
+
+@code {
+    Data.UserInfo userInfo = new();
+
+    private void SubmitInfo() {
+        InfoService.PushUserInfo(userInfo);
+    }
+}
+
