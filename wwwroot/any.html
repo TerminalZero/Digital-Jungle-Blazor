@@ -2,21 +2,26 @@
   <head>
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
     <style>
+      @media (width >= 600px) {
+        .main {
+          display: flex;
+          flex-direction: row;
+        }
+        .left {
+          width:30%;
+        }
+      }
+
       .left {
         background-color: rgba(188, 143, 143, 0.459);
-        float: left;
-        width: 40%;
-        box-shadow: 3px 2px 4px 0px rgba(0,0,0,0.6);
       }
       .right {
         background-color: rgba(135, 206, 250, 0.555);
-        float: right;
-        width: 40%;
+        flex-grow: 1;
       }
-
-      .left p::after {
-        content: "\e609"
-      }
+        .left p, .right p {
+          margin-block: 0px;
+        }
 
     </style>
   </head>
@@ -26,32 +31,6 @@
         <p>something</p>
       </div>
       <div class="right">
-        <p>stuff</p>
-        <p>stuff</p>
-        <p>stuff</p>
-        <p>stuff</p>
-        <p>stuff</p>
-        <p>stuff</p>
-        <p>stuff</p>
-        <p>stuff</p>
-        <p>stuff</p>
-        <p>stuff</p>
-        <p>stuff</p>
-        <p>stuff</p>
-        <p>stuff</p>
-        <p>stuff</p>
-        <p>stuff</p>
-        <p>stuff</p>
-        <p>stuff</p>
-        <p>stuff</p>
-        <p>stuff</p>
-        <p>stuff</p>
-        <p>stuff</p>
-        <p>stuff</p>
-        <p>stuff</p>
-        <p>stuff</p>
-        <p>stuff</p>
-        <p>stuff</p>
         <p>stuff</p>
         <p>stuff</p>
         <p>stuff</p>
