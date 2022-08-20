@@ -3,6 +3,8 @@
 
 <EditForm Model="@userInfo" OnValidSubmit="@SubmitInfo">
     <InputText class="register" @bind-Value="@userInfo.Name"></InputText>
+    <InputText type="Password" class="register" @bind-Value="@userInfo.Password"></InputText>
+    <button type="submit">Register</button>
 </EditForm>
 
 @code {
