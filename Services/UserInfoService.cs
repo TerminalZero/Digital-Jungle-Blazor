@@ -4,13 +4,13 @@ using SqlConnections;
 
 public class UserInfoService {
     MySqlConnector.MySqlConnection _qconnection { get; set; }
-    MySqlConnector.MySqlConnection _vconnection { get; set; }
+    MySqlConnector.MySqlConnection _mconnection { get; set; }
     
-    public UserInfoService(QueryingConnection qconnection, MasterConnection vconnection) {
+    public UserInfoService(QueryingConnection qconnection, MasterConnection mconnection) {
         _qconnection = qconnection.Get();
-        _vconnection = vconnection.Get();
+        _mconnection = mconnection.Get();
         _qconnection.Open();
-        _vconnection.Open();
+        _mconnection.Open();
     }
 
     public Task<DbTables.UserInfo> GetUserById(int id)
@@ -42,11 +42,11 @@ public class UserInfoService {
 
     public async void PushUserInfo(DbTables.UserInfo userInfo) {
         try {
-            await _vconnection.OpenAsync();
+            await _mconnection.OpenAsync();
         } catch {}
         var command = new MySqlConnector.MySqlCommand($"INSERT INTO UserInfo(Name)" +
             $"VALUE(\"{userInfo.Name}\");"
-        , _vconnection);
+        , _mconnection);
 
         using var writer = command.ExecuteNonQueryAsync();
         writer.Wait();
