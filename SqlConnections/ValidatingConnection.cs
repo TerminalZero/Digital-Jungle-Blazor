@@ -1,4 +1,4 @@
-namespace Digital_Jungle_Blazor.Services.SqlConnections;
+namespace Digital_Jungle_Blazor.SqlConnections;
 
 public class ValidatingConnection {
     public IConfiguration _configuration;

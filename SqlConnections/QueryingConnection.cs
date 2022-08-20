@@ -1,4 +1,4 @@
-namespace Digital_Jungle_Blazor.Services.SqlConnections;
+namespace Digital_Jungle_Blazor.SqlConnections;
 
 public class QueryingConnection {
     public IConfiguration _configuration;

@@ -1,4 +1,4 @@
-﻿@using Services.QueryingService;
+﻿@using Services
 @inject UserInfoService InfoService;
 
 <EditForm Model="@userInfo" OnValidSubmit="@SubmitInfo">
@@ -6,7 +6,7 @@
 </EditForm>
 
 @code {
-    Data.UserInfo userInfo = new();
+    DbTables.UserInfo userInfo = new();
 
     private void SubmitInfo() {
         InfoService.PushUserInfo(userInfo);

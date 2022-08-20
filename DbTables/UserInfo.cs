@@ -1,4 +1,4 @@
-namespace Digital_Jungle_Blazor.Data;
+namespace Digital_Jungle_Blazor.DbTables;
 
 public class UserInfo {
     public int Id { get; set; }

@@ -2,10 +2,8 @@
 
 <PageTitle>User info</PageTitle>
 
-@using Digital_Jungle_Blazor.Data
-@using Services.QueryingService
-@inject UserInfoService userInfoService
-@* @inject Services.QueryingService.UserInfoService userInfoService *@
+@using Digital_Jungle_Blazor.DbTables
+@inject Services.UserInfoService userInfoService
 
 @if (userInfos == null)
 {

@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Digital_Jungle_Blazor.Services.SqlConnections;
-using Digital_Jungle_Blazor.Services.QueryingService;
+using Digital_Jungle_Blazor.SqlConnections;
+using Digital_Jungle_Blazor.Services;
 
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 
