@@ -65,7 +65,7 @@ public class DJ_Startup
 
         services.AddSingleton<UserInfoService>();
         services.AddTransient<QueryingConnection>();
-        services.AddTransient<ValidatingConnection>();
+        services.AddTransient<MasterConnection>();
 
     }
 }

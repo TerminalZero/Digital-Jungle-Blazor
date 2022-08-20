@@ -6,7 +6,7 @@ public class UserInfoService {
     MySqlConnector.MySqlConnection _qconnection { get; set; }
     MySqlConnector.MySqlConnection _vconnection { get; set; }
     
-    public UserInfoService(QueryingConnection qconnection, ValidatingConnection vconnection) {
+    public UserInfoService(QueryingConnection qconnection, MasterConnection vconnection) {
         _qconnection = qconnection.Get();
         _vconnection = vconnection.Get();
         _qconnection.Open();
