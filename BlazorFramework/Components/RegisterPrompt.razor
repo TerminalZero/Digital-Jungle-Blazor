@@ -1,11 +1,11 @@
 ﻿@using Services
 @inject UserInfoService InfoService;
 
-<EditForm Model="@userInfo" OnValidSubmit="@SubmitInfo">
-    <InputText class="register" @bind-Value="@userInfo.Name"></InputText>
-    <InputText type="Password" class="register" @bind-Value="@userInfo.Password"></InputText>
+<form Model="@userInfo" @onsubmit="@SubmitInfo">
+    <input @bind="@userInfo.Name"></input>
+    <input @bind="@userInfo.Password" type="Password"></input>
     <button type="submit">Register</button>
-</EditForm>
+</form>
 
 @code {
     DbTables.UserInfo userInfo = new();
