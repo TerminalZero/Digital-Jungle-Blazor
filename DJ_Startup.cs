@@ -33,7 +33,7 @@ public class DJ_Startup
         app.UseCookiePolicy();
 
         app.UseEndpoints(configure => {
-            configure.MapControllerRoute("auth", "controller");
+            configure.MapControllerRoute("authentication", "/[controller]");
             configure.MapBlazorHub();
             configure.MapFallbackToPage("/_Host");
         });
