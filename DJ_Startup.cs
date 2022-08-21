@@ -25,6 +25,7 @@ public class DJ_Startup
         }
 
         app.UseStaticFiles();
+        
 
         app.UseRouting();
         app.UseAuthentication();
@@ -32,9 +33,9 @@ public class DJ_Startup
         app.UseCookiePolicy();
 
         app.UseEndpoints(configure => {
+            configure.MapControllerRoute("auth", "controller");
             configure.MapBlazorHub();
             configure.MapFallbackToPage("/_Host");
-            configure.MapControllerRoute("auth", "controller");
         });
     }
 
