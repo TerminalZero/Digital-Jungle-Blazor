@@ -11,9 +11,27 @@
 }
 else
 {
-    @foreach (UserInfo userInfo in userInfos) {
-        <p>@userInfo.Name</p>
-    }
+    <table class="w-100 border border-dark">
+        <thead class="border-bottom border-dark">
+            <tr>
+                <th class="border border-dark px-2">User Name</th>
+                <th class="border border-dark px-2">Join Date</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (UserInfo userInfo in userInfos) {
+            <tr>
+                <td class="border border-dark px-2">
+                    @userInfo.Name
+                </td>
+                <td class="border border-dark px-2">
+                    @userInfo.JoinDate
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
 }
 
 @code {
