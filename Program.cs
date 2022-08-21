@@ -6,6 +6,7 @@ public class Program
     {
         Microsoft.AspNetCore.WebHost.CreateDefaultBuilder(args)
             .UseStartup<DJ_Startup>()
+            .UseStaticWebAssets()
             .Build()
             .Run();
     }
