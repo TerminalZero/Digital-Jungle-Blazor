@@ -1,5 +1,6 @@
-﻿@using Services
-@inject UserInfoService InfoService;
+﻿@using Digital_Jungle_Blazor.Services
+
+@inject UserInfoService InfoService
 
 <form Model="@userInfo" @onsubmit="@SubmitInfo">
     <input @bind="@userInfo.Name"></input>
@@ -9,9 +10,10 @@
 
 @code {
     DbTables.UserInfo userInfo = new();
-
     private void SubmitInfo() {
-        InfoService.PushUserInfo(userInfo);
+        InfoService.RegisterUserInfo(userInfo);
     }
 }
+
+
 
