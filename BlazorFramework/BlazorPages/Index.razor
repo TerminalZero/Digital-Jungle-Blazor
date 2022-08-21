@@ -3,4 +3,15 @@
 
 <PageTitle>Index</PageTitle>
 
-<RegisterPrompt></RegisterPrompt>
+<AuthorizeView>
+     <Authorized>
+         <h1>Hello @context.User.Claims.ElementAt(1).Value</h1>
+         <p>Your user id is @context.User.Claims.ElementAt(0).Value</p>
+     </Authorized>
+</AuthorizeView>
+  
+<form action="auth" method="post">
+     <input type="text" name="name" />
+     <input type="password" name="password" />
+     <input type="submit" value="Login"/>
+</form> 
