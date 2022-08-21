@@ -29,10 +29,12 @@ public class DJ_Startup
         app.UseRouting();
         app.UseAuthentication();
         app.UseAuthorization();
+        app.UseCookiePolicy();
 
         app.UseEndpoints(configure => {
             configure.MapBlazorHub();
             configure.MapFallbackToPage("/_Host");
+            configure.MapControllerRoute("auth", "controller");
         });
     }
 
@@ -51,15 +53,13 @@ public class DJ_Startup
             }
         });
 
+        services.AddHttpContextAccessor();
+        
         services.AddRazorPages(_ => _.RootDirectory = "/BlazorFramework/RazorPages");
         services.AddServerSideBlazor();
 
         services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-            .AddCookie(options =>
-            {
-                options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
-                options.SlidingExpiration = true;
-            });
+            .AddCookie();
 
         services.AddSingleton<ExampleData.WeatherForecastService>();
 
