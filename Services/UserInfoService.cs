@@ -33,7 +33,8 @@ public class UserInfoService {
             $"SELECT * FROM UserInfo " +
             $"WHERE Name = \"{Name}\" " +
             $"AND Id = (SELECT Id FROM UserInfo_Private " +
-            $"WHERE Password = \"{Password}\");"
+            $"WHERE Password = \"{Password}\") " +
+            $"LIMIT 1;"
         , _mconnection);
 
         using var reader = await command.ExecuteReaderAsync();
