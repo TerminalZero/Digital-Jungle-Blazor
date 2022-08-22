@@ -44,6 +44,7 @@ public class UserInfoService {
                 Name = reader.GetString(1),
                 JoinDate = reader.GetDateTime(2)
             };
+            reader.Close();
             return userInfo;
         }
         else {
