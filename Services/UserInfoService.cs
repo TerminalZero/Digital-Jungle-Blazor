@@ -31,10 +31,10 @@ public class UserInfoService {
 
         var command = new MySqlConnector.MySqlCommand(
             $"SELECT * FROM UserInfo " +
-            $"WHERE Name = \"{Name}\" " +
-            $"AND Id = (SELECT Id FROM UserInfo_Private " +
-            $"WHERE Password = \"{Password}\" " +
-            $"LIMIT 1);"
+            $"WHERE Id = (SELECT Id FROM UserInfo_Private" +
+            $"WHERE Password = \"{Name}\"" +
+            $"AND Id = (SELECT Id FROM UserInfo" +
+            $"WHERE Name = \"{Password}\"));"
         , _mconnection);
 
         using var reader = await command.ExecuteReaderAsync();
