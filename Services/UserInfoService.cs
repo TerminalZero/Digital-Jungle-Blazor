@@ -31,9 +31,9 @@ public class UserInfoService {
 
         var command = new MySqlConnector.MySqlCommand(
             $"SELECT * FROM UserInfo " +
-            $"WHERE Id = (SELECT Id FROM UserInfo_Private" +
-            $"WHERE Password = \"{Name}\"" +
-            $"AND Id = (SELECT Id FROM UserInfo" +
+            $"WHERE Id = (SELECT Id FROM UserInfo_Private " +
+            $"WHERE Password = \"{Name}\" " +
+            $"AND Id = (SELECT Id FROM UserInfo " +
             $"WHERE Name = \"{Password}\"));"
         , _mconnection);
 
